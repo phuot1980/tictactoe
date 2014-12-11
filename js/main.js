@@ -10,7 +10,7 @@ function tictactoe()
 	for (var i = 0; i<9; i++)
 	{
 		$('#box' + i).click(markBox);
-		console.log("#box"+i);
+		// console.log("#box"+i);
 	}
 
 	//tracking player movement 
@@ -18,23 +18,32 @@ function tictactoe()
 	{
 		//gets div information and returns number
 		var playerMove = $(this).attr('id').slice(-1);
-
+		console.log(playerMove)
 	
-		//change player from x to o
+		//change player from x to o. 
 		if (currentPlayer == 1) 
 		{
-			gameBoard[playerMove] = 'x';
-			currentPlayer = 2;
+			//i can only put an x if the box is not occupied. 
+			if (gameBoard[playerMove] == undefined)
+			{
+				gameBoard[playerMove] = 'x';
+				currentPlayer = 2;
+			}
 		}
-		else 
+		// if youre in this else, then it is players2 turn 
+		else  
 		{
-			gameBoard[playerMove] = 'O';
-			currentPlayer = 1;
+			//i can only put an o if the box in not occupied.
+			if (gameBoard[playerMove] == undefined)
+			{
+				gameBoard[playerMove] = 'O';
+				currentPlayer = 1;
+			}
 		}
 
-		checkWinCondition()
+		checkWinCondition();
 
-		console.log(gameBoard)
+		console.log(gameBoard);
 	}
 	//check win condition in rows, column and diagnols
 	function checkWinCondition()
@@ -89,6 +98,8 @@ function tictactoe()
 		}
 	}// function checkWinCOndition
 
+	// checks for tie condition. If gameboard[i] = undefined it means it is not a tie. 
+	// if a tie happens if the board is filled up and no win condition is not met
 	function checkTie()
 	{
 		for (var i = 0; i < gameBoard.length; i++)
