@@ -82,8 +82,27 @@ function tictactoe()
 		{
 			console.log('winner');
 		}
-
+		// still need to check for tie condition. 
+		if (checkTie() == true)
+		{
+			console.log('tie');
+		}
 	}// function checkWinCOndition
+
+	function checkTie()
+	{
+		for (var i = 0; i < gameBoard.length; i++)
+		{
+			if (gameBoard[i] == undefined)
+			{
+				return false;
+				//not a tie
+			}
+		}
+		//tie 
+		return true;
+	}
+
 	return;
 };
 
