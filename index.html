@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='tttApp'>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script src="js/jquery-2.1.1.min.js"></script>
-	<script src="js/main.js"></script>
+	<!--<script src="js/main.js"></script>-->
+	<script src="js/angular.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+	<!-- AngularFire -->
+	<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/tttController.js"></script>
+
 	<title>Tic Tac Toe</title>
 </head>
-<body>
+<body ng-controller="tttController as game">
 
 	<h1><button>Play Game</button></h1>
+	<h2>{{ game.gameBoard }}</h2>
 
 	<section id="container">
-			<div class="boxes" id="box0"></div>
-			<div class="boxes" id="box1"></div>
-			<div class="boxes" id="box2"></div>
-			<div class="boxes" id="box3"></div>
-			<div class="boxes" id="box4"></div>
-			<div class="boxes" id="box5"></div>
-			<div class="boxes" id="box6"></div>
-			<div class="boxes" id="box7"></div>
-			<div class="boxes" id="box8"></div>
+			<!--ng-click to repeat the array. setTile is used to mark the div with 'x'. -->
+			<div ng-click="game.setTile('x', $index)" class="boxes"
+					ng-repeat="tile in game.gameBoard track by $index">
+
+				{{game.getTile($index)}}
+
+			</div>
+
 	</section>
 	<br>
 	<button></button>

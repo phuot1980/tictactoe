@@ -17,6 +17,7 @@ function tictactoe()
 	function markBox()
 	{
 		//gets div information and returns number
+		console.log(this);
 		var playerMove = $(this).attr('id').slice(-1);
 		console.log(playerMove)
 	
