@@ -2,39 +2,53 @@ angular
 	.module('tttApp')
 	.controller('tttController', tttControllerFunc);
 
-	//tttControllerFunc.$inject = ['GameBoard'];
 	tttControllerFunc.$inject = ['$firebase'];
 	function tttControllerFunc($firebase)
 	{
-		this.title = "tic tac toe";
-		this.gameBoard = new Array(9);
-		this.setTile = setTile;
-		this.getTile = getTile;
-		this.currentPlayer = 1;
-		this.gameSession = getGameSession();
+		var self = this
 
-		//this.gameSession.name = "ponlok";
-		//this.gameSession.currentPlayer = 1;
-		//this.gameSession.$save();
+		self.title = "tic tac toe";
+		self.gameBoard = new Array(9);
+		self.setTile = setTile;
+		self.getTile = getTile;
+		self.currentPlayer = 1;
+		self.newGame = newGame;
+
+		self.gameSession = getGameSession();
+
+		// self.gameSession.name = "ponlok";
+		// self.gameSession.array = [];
+		// self.gameSession.gameBoard = ["","","","","","","","",""]
+		// self.gameSession.$save();
 
 		//i = the index in the array. letter 'x' is pushed in from the index.html
 		function setTile(letter, i)
 		{
-			if (this.gameSession.currentPlayer== 1) {
-				this.gameSession.gameBoard[i] = 'x';
-				this.gameSession.currentPlayer = 2 ;
-				console.log(this.gameSession.gameBoard)
+			if (self.currentPlayer == 1) 
+			{
+				self.gameSession.gameBoard[i] = 'x';
+				self.currentPlayer = 2 ;
+				console.log(self.gameSession.gameBoard);
 			}
-			else{
-				this.gameSession.gameBoard[i] = 'o';
-				this.gameSession.currentPlayer= 1;
+			else
+			{
+				self.gameSession.gameBoard[i] = 'o';
+				self.currentPlayer = 1;
+				console.log(self.gameSession.gameBoard);
 			}
-			this.gameSession.$save();
+			self.gameSession.$save();
 		}
 
 		function getTile(i)
 		{
-			return this.gameBoard[i];
+			return self.gameBoard[i];
+		}
+
+		function newGame()
+		{
+			self.gameSession.gameBoard = ["","","","","","","","",""]
+			self.gameSession.$save();
+			console.log("game board clear")
 		}
 
 		function getGameSession()

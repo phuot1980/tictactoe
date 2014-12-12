@@ -1,12 +1,13 @@
 #container
 {
-	border: 3px solid black;
+	/*border: 3px solid black;*/
 	max-width: 400px;
 	max-height: 400px;
 	padding: 10px;
 	margin: 0 auto;
 	text-align: center;
 	border-radius: 10px;
+
 }
 
 .boxes 
@@ -14,15 +15,21 @@
 	margin: 0 auto;
 	width: 100px;
 	height: 100px;
-	display: inline-block;
+	/*display: inline-block;*/
 	border: 1px solid black;
+	float: left;
 	margin: 5px;
 	box-shadow: 10px 5px 5px black;
 	border-radius: 10px;
-	/*float: left;*/
+
 }
 
 h1 
+{
+	text-align: center;
+}
+
+body
 {
 	text-align: center;
 }
