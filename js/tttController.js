@@ -131,7 +131,7 @@ angular
 			//winner is not found 
 			return false;
 		}
-		// checkTie checks for two condition: no winner and no more moves availble, bitch. 
+		// checkTie checks for two condition: no winner and no more moves availble. 
 		function checkTie()
 		{
 			for (var i = 0; i < self.gameSession.gameBoard.length; i++)
