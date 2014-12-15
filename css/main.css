@@ -28,12 +28,15 @@
 	box-shadow: 10px 5px 5px black;
 	border-radius: 10px;
 	font-size: 7em;
-
 }
 
 h1 
 {
 	text-align: center;
+}
+h2
+{
+	font-size: 3em;
 }
 
 body
@@ -50,7 +53,7 @@ button
 	border: 1px solid black;
 	/*float: left;*/
 	/*margin: 5px;*/
-	box-shadow: 10px 5px 5px black;
+	box-shadow: 5px 5px 5px black;
 	border-radius: 10px;
 	background-color: none;
 }

@@ -7,7 +7,7 @@ angular
 	function tttControllerFunc($firebase)
 	{
 		var self = this;
-
+		var currentMarker; // varible used to prevent a player from making both 'x' and 'o'
 		// set inital firebase variables
 		self.gameSession = getGameSession(); // this is my firebase connection
 		self.gameSession.message = "Player's One Turn!";
@@ -27,21 +27,23 @@ angular
 			//this is player 1
 			if (self.gameSession.currentPlayer == 1) 
 			{
-				//i can only put an x if the box is not occupied. 
-				if (self.gameSession.gameBoard[i] == "")
+				// can only put an 'x' if the box is not occupied. 
+				if (self.gameSession.gameBoard[i] == "" && currentMarker != 'o' )
 				{
+					currentMarker ='x'
 					self.gameSession.gameBoard[i] = 'x';
 					self.gameSession.currentPlayer = 2 ;
 					self.gameSession.message = "Player's Two Turn!";
 					// console.log(self.gameSession.gameBoard);
 				}
 			}
-			//this player 2
+			//this is player 2
 			else
 			{
-				//i can only put an o if the box is not occupied. 
-				if (self.gameSession.gameBoard[i] == "")
+				// can only put an 'o' if the box is not occupied. 
+				if (self.gameSession.gameBoard[i] == "" && currentMarker != 'x')
 				{
+					currentMarker = 'o'
 					self.gameSession.gameBoard[i] = 'o';
 					self.gameSession.currentPlayer = 1;
 					self.gameSession.message = "Player's One Turn!";
@@ -52,7 +54,6 @@ angular
 			// if there is a winner then there can be no tie. 
 			if (checkWin() == false)
 			{
-
 				if (checkTie() == true)
 				{
 					self.gameSession.message = "Cats Game!";
@@ -127,7 +128,6 @@ angular
 			//winner is not found 
 			return false;
 		}
-
 		// checkTie checks for two condition: no winner and no more moves availble, bitch. 
 		function checkTie()
 		{
@@ -144,4 +144,4 @@ angular
 			// console.log('this is a tie')
 			return true;
 		}
-	}
+	}// closing tag for tttControlerFunc
