@@ -15,15 +15,15 @@
 <body ng-controller="tttController as game">
 
 	<h1><button>Play Game</button></h1>
-	<h2>{{ game.gameBoard }}</h2>
-
+	<!-- give me the property tttcontroller and print it -->
+	<h2>{{ game.gameSession.gameBoard }}</h2>
 	<section id="container">
 			<!--ng-click to repeat the array. setTile is used to mark the div with 'x'. -->
-			<div ng-click="game.setTile('x', $index)" class="boxes"
-					ng-repeat="tile in game.gameBoard track by $index">
-				{{game.getTile($index)}}<button>something</button>
+			<div ng-click="game.setTile($index)" class="boxes"
+					ng-repeat="tile in game.gameSession.gameBoard track by $index">
+				{{game.getTile($index)}}
 			</div>
-			<button ng-click="game.newGame()">Start a new Game</button>
+			<button ng-click="game.newGame()">new game</button>
 
 	</section>
 
