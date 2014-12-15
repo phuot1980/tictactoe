@@ -27,7 +27,7 @@ angular
 			//this is player 1
 			if (self.gameSession.currentPlayer == 1) 
 			{
-				// can only put an 'x' if the box is not occupied. 
+				// can only put an 'x' if the box is not occupied and player symbol is not 'o' 
 				if (self.gameSession.gameBoard[i] == "" && currentMarker != 'o' )
 				{
 					currentMarker ='x'
@@ -40,7 +40,7 @@ angular
 			//this is player 2
 			else
 			{
-				// can only put an 'o' if the box is not occupied. 
+				// can only put an 'o' if the box is not occupied and player symbol is not 'o'
 				if (self.gameSession.gameBoard[i] == "" && currentMarker != 'x')
 				{
 					currentMarker = 'o'
@@ -98,7 +98,7 @@ angular
 			if (((getTile(x) == getTile(y)) && (getTile(y) == getTile(z))) && 
 				((getTile(x) != "") || (getTile(y) != "") || (getTile(z) != "")))
 			{
-				
+
 				// console.log("winner");
 				//winner found
 				return true;
