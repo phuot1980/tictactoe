@@ -6,14 +6,13 @@ angular
 	tttControllerFunc.$inject = ['$firebase'];
 	function tttControllerFunc($firebase)
 	{
-		var self = this
+		var self = this;
 
 		// set inital firebase variables
-		self.gameSession = getGameSession();
+		self.gameSession = getGameSession(); // this is my firebase connection
 		self.gameSession.message = "Player's One Turn!";
 		self.gameSession.title = "tic tac toe";
 		self.gameSession.currentPlayer = 1;
-		// self.gameSession.gameBoard = new Array(9);
 		self.gameSession.gameBoard = ["","","","","","","","",""];
 		//declare functions
 		self.setTile = setTile;
@@ -36,7 +35,6 @@ angular
 					self.gameSession.message = "Player's Two Turn!";
 					// console.log(self.gameSession.gameBoard);
 				}
-				
 			}
 			//this player 2
 			else
@@ -86,7 +84,7 @@ angular
 			// console.log('game board clear')
 		}
 
-		function getGameSession()
+		function getGameSession() //firebase connection
 		{
 			var ref = new Firebase("https://tictactoefb.firebaseio.com/gameSession");
 			var gameSession = $firebase(ref).$asObject();
@@ -95,6 +93,7 @@ angular
 
 		function checkRow(x,y,z)
 		{
+			// needs to meet two condition. needs to be equal and not empty.
 			if (((getTile(x) == getTile(y)) && (getTile(y) == getTile(z))) && 
 				((getTile(x) != "") || (getTile(y) != "") || (getTile(z) != "")))
 			{
@@ -104,8 +103,7 @@ angular
 				return true;
 			}
 			//no winner found
-			return false;
-
+			return false;		
 		}
 
 		function checkWin()
@@ -130,6 +128,7 @@ angular
 			return false;
 		}
 
+		// checkTie checks for two condition: no winner and no more moves availble, bitch. 
 		function checkTie()
 		{
 			for (var i = 0; i < self.gameSession.gameBoard.length; i++)
