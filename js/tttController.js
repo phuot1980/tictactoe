@@ -83,7 +83,7 @@ angular
 		{
 			self.gameSession.gameBoard = ["","","","","","","","",""];
 			self.gameSession.currentPlayer = 1;
-			self.gameSession.title = "tic tac toe";
+			self.gameSession.message = "Player's One Turn";
 			self.gameSession.$save();
 			// console.log('game board clear')
 		}
