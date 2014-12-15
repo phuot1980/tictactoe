@@ -10,6 +10,7 @@ angular
 
 		// set inital firebase variables
 		self.gameSession = getGameSession();
+		self.gameSession.message = "Player's One Turn!";
 		self.gameSession.title = "tic tac toe";
 		self.gameSession.currentPlayer = 1;
 		// self.gameSession.gameBoard = new Array(9);
@@ -32,7 +33,8 @@ angular
 				{
 					self.gameSession.gameBoard[i] = 'x';
 					self.gameSession.currentPlayer = 2 ;
-					console.log(self.gameSession.gameBoard);
+					self.gameSession.message = "Player's Two Turn!";
+					// console.log(self.gameSession.gameBoard);
 				}
 				
 			}
@@ -44,7 +46,8 @@ angular
 				{
 					self.gameSession.gameBoard[i] = 'o';
 					self.gameSession.currentPlayer = 1;
-					console.log(self.gameSession.gameBoard);
+					self.gameSession.message = "Player's One Turn!";
+					// console.log(self.gameSession.gameBoard);
 				}
 			}
 			// checkTie runs when there is no winner. 
@@ -54,13 +57,16 @@ angular
 
 				if (checkTie() == true)
 				{
-					console.log('tie');
+					self.gameSession.message = "Cats Game!";
+					//this is tie game
+					// console.log('tie');
 				}
 			}
 			else
 			{
+				self.gameSession.message = "You Won!";
 				//display a winner
-				console.log('winner');
+				// console.log('winner');
 			}
 			// saving player move into firebase. 
 			self.gameSession.$save();
@@ -77,7 +83,7 @@ angular
 			self.gameSession.gameBoard = ["","","","","","","","",""];
 			self.gameSession.currentPlayer = 1;
 			self.gameSession.$save();
-			console.log('game board clear')
+			// console.log('game board clear')
 		}
 
 		function getGameSession()

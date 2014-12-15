@@ -14,9 +14,9 @@
 </head>
 <body ng-controller="tttController as game">
 
-	<h1><button>Play Game</button></h1>
+	<h1>Ponlok's Tic Tac Toe Game</h1>
 	<!-- give me the property tttcontroller and print it -->
-	<h2>{{ game.gameSession.gameBoard }}</h2>
+	<h2>{{ game.gameSession.message }}</h2>
 	<section id="container">
 			<!--ng-click to repeat the array. setTile is used to mark the div with 'x'. -->
 			<div ng-click="game.setTile($index)" class="boxes"
@@ -26,6 +26,7 @@
 			<button ng-click="game.newGame()">new game</button>
 
 	</section>
+
 
 </body>
 </html>
