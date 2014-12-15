@@ -7,7 +7,9 @@ angular
 	function tttControllerFunc($firebase)
 	{
 		var self = this;
-		var currentMarker; // varible used to prevent a player from making both 'x' and 'o'
+		var currentMarker; // varible used to prevent a player from 
+		// making both 'x' and 'o'
+
 		// set inital firebase variables
 		self.gameSession = getGameSession(); // this is my firebase connection
 		self.gameSession.message = "Player's One Turn!";
@@ -81,6 +83,7 @@ angular
 		{
 			self.gameSession.gameBoard = ["","","","","","","","",""];
 			self.gameSession.currentPlayer = 1;
+			self.gameSession.title = "tic tac toe";
 			self.gameSession.$save();
 			// console.log('game board clear')
 		}

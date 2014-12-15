@@ -1,6 +1,8 @@
 @font-face
 {
 	font-family: "ostrich";
+	/*font-family: "ostrich-bold";*/
+	/*src: url('ostrich-bold.ttf');*/
 	src: url('ostrich-regular.ttf');
 }
 
